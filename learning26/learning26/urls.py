@@ -32,4 +32,5 @@ urlpatterns = [
     path("movies/", views.movies),
     path("shows/", views.shows),
     path("news/", views.news),
+    path("team/", views.team),
 ]

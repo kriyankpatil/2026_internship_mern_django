@@ -33,3 +33,43 @@ def shows(request):
 
 def news(request):
     return render(request, "news.html")
+
+
+def team(request):
+    message = None
+    created_team = None
+
+    if request.method == "POST":
+        team_name = (request.POST.get("teamName") or "").strip()
+        captain = (request.POST.get("cap") or "").strip()
+        trophy = (request.POST.get("trophy") or "").strip()
+        raw_players = (request.POST.get("playerList") or "").strip()
+
+        # Accept comma-separated and/or newline-separated players
+        players = []
+        for chunk in raw_players.replace(",", "\n").splitlines():
+            name = chunk.strip()
+            if name:
+                players.append(name)
+
+        if len(players) < 5:
+            message = "Add at least 5 players to create a team."
+        else:
+            created_team = {
+                "teamName": team_name,
+                "cap": captain,
+                "trophy": trophy,
+                "playerList": players,
+            }
+
+            # Store created teams in session ("own" section)
+            teams = request.session.get("teams", [])
+            teams.append(created_team)
+            request.session["teams"] = teams
+
+    context = {
+        "message": message,
+        "created_team": created_team,
+        "own_teams": request.session.get("teams", []),
+    }
+    return render(request, "team.html", context)

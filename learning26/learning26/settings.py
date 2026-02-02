@@ -49,6 +49,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Use cookie-based sessions (no database table needed)
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+
 ROOT_URLCONF = 'learning26.urls'
 
 TEMPLATES = [
