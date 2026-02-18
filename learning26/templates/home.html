@@ -1,11 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Home</h1>   
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="home-hero">
+  <h1>Welcome to Learning26</h1>
+  <p>Access employees, students, services, and more in one place.</p>
+</section>
+
+<section class="services-section">
+  <h2>Services</h2>
+  <div class="services-grid">
+    <a href="{% url 'serviceList' %}" class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Service List</h3>
+      <p>View all services.</p>
+    </a>
+    <a href="{% url 'createService' %}" class="service-card">
+      <div class="service-icon accent">➕</div>
+      <h3>Create Service</h3>
+      <p>Add a new service.</p>
+    </a>
+    <a href="{% url 'createEmployeeWithForm' %}" class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Create Employee</h3>
+      <p>Add a new employee.</p>
+    </a>
+    <a href="{% url 'employeeList' %}" class="service-card">
+      <div class="service-icon accent">📄</div>
+      <h3>Employee List</h3>
+      <p>View and manage employees.</p>
+    </a>
+  </div>
+</section>
+{% endblock %}

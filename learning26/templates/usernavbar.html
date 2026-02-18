@@ -1,10 +1,12 @@
 <nav class="navbar">
     <div class="logo">
-      <a href="#">Django</a>
+      <a href="{% url 'home' %}">Learning26</a>
     </div>
     <div class="nav-links">
       <a href="{% url 'createEmployeeWithForm' %}">Create Employees</a>
       <a href="{% url 'employeeList' %}">Employee List</a>
       <a href="#">Contact</a>
+      <a href="{% url 'serviceList' %}">Service List</a>
+      <a href="{% url 'createService' %}">Create Service</a>
     </div>
   </nav>
